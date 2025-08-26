@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addEmployee } from '../store/employeeSlice';
 import DatePicker from '../components/DatePicker';
@@ -23,7 +23,8 @@ const departments = [
 
 function CreateEmployee() {
   const dispatch = useDispatch();
-  const [employee, setEmployee] = useState({
+
+  const initialFormState = {
     firstName: '',
     lastName: '',
     dateOfBirth: '',
@@ -33,8 +34,9 @@ function CreateEmployee() {
     city: '',
     state: states[0].abbreviation,
     zipCode: '',
-  });
+  };
 
+  const [employee, setEmployee] = useState(initialFormState);
   const [showModal, setShowModal] = useState(false);
 
   const handleChange = (e) => {
@@ -44,8 +46,15 @@ function CreateEmployee() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log('Données envoyées :', employee); // 👈 Ici !
     dispatch(addEmployee(employee));
     setShowModal(true);
+    setEmployee(initialFormState); // reset après enregistrement
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setEmployee(initialFormState); // reset si fermeture manuelle
   };
 
   return (
@@ -106,7 +115,9 @@ function CreateEmployee() {
         <button type="submit">Save</button>
       </form>
 
-      {showModal && <Modal message="Employee Created!" onClose={() => setShowModal(false)} />}
+      {showModal && (
+        <Modal message="Employee Created!" onClose={handleCloseModal} />
+      )}
     </div>
   );
 }
