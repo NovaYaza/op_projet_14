@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addEmployee } from '../store/employeeSlice';
 import DatePicker from '../components/DatePicker';
-import Modal from '../components/Modal';
+/* import Modal from '../components/Modal'; */
+import Modal from 'modal-component';
 
 const states = [
   { name: 'Alabama', abbreviation: 'AL' },
