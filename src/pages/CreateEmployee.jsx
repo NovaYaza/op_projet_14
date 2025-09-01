@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addEmployee } from '../store/employeeSlice';
+import { addEmployee } from '../redux/employeeSlice';
 import DatePicker from '../components/DatePicker';
 import Modal from '../components/Modal';
 

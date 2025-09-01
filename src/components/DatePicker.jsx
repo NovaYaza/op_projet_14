@@ -9,6 +9,9 @@ function CustomDatePicker({ id, value, onChange }) {
       onChange={(date) => onChange(date)}
       dateFormat="MM/dd/yyyy"
       placeholderText="Select date"
+      showMonthDropdown
+      showYearDropdown
+      dropdownMode="select"
     />
   );
 }

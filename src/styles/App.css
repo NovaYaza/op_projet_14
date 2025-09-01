@@ -173,3 +173,50 @@ form button:hover {
   color: #007bff;
   text-decoration: underline;
 }
+
+/* fleches datepicker */
+.react-datepicker {
+  font-family: 'Arial', sans-serif;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.react-datepicker__header {
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+  padding-top: 15px;
+  border-radius: 8px 8px 0 0;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background-color: #007bff;
+  color: white;
+  border-radius: 50%;
+}
+
+.react-datepicker__navigation-icon, .react-datepicker__navigation-icon--previous { 
+  padding-right: 20px; 
+}
+
+.react-datepicker__header__dropdown, .react-datepicker__header__dropdown--select {
+  margin-top: 15px;
+}
+
+/* Corrige le style des flèches */
+.react-datepicker__navigation {
+  top: 5px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* Ajoute un effet hover */
+.react-datepicker__navigation:hover {
+  background: transparent;
+}
