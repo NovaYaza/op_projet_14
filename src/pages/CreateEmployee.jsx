@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addEmployee } from '../redux/employeeSlice';
 import DatePicker from '../components/DatePicker';
-import Modal from '../components/Modal';
+/* import Modal from '../components/Modal'; */
+import Modal from '@novatom/react-modal';
+import '@novatom/react-modal/dist/index.css';
 
 const states = [
   { name: 'Alabama', abbreviation: 'AL' },
@@ -45,12 +47,31 @@ function CreateEmployee() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Données envoyées :', employee); // 👈 Ici !
-    dispatch(addEmployee(employee));
-    setShowModal(true);
-    setEmployee(initialFormState); // reset après enregistrement
+  e.preventDefault();
+
+  // ✅ Fonction utilitaire pour convertir les Date
+  const toISOStringIfDate = (value) => {
+    if (value instanceof Date) return value.toISOString();
+    try {
+      const parsed = new Date(value);
+      return isNaN(parsed) ? '' : parsed.toISOString();
+    } catch {
+      return '';
+    }
   };
+
+  const serializedEmployee = {
+    ...employee,
+    dateOfBirth: toISOStringIfDate(employee.dateOfBirth),
+    startDate: toISOStringIfDate(employee.startDate),
+  };
+
+  console.log('Payload envoyé à Redux :', serializedEmployee);
+
+  dispatch(addEmployee(serializedEmployee));
+  setShowModal(true);
+  setEmployee(initialFormState);
+};
 
   const handleCloseModal = () => {
     setShowModal(false);

@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@novatom/react-modal": "^1.0.4",
     "@reduxjs/toolkit": "^2.8.2",
     "react": "^19.1.1",
     "react-datepicker": "^8.7.0",
